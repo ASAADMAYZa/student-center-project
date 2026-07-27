@@ -1,9 +1,9 @@
-FROM eclipse-temurin:11-jdk AS builder
+FROM tomcat:9.0-jdk11-openjdk AS builder
 WORKDIR /app
 COPY . .
 RUN mkdir -p src/main/webapp/WEB-INF/classes
 RUN find src/main/java -name "*.java" > sources.txt
-RUN javac -d src/main/webapp/WEB-INF/classes @sources.txt
+RUN javac -cp "/usr/local/tomcat/lib/*" -d src/main/webapp/WEB-INF/classes @sources.txt
 
 FROM tomcat:9.0-jdk11-openjdk
 WORKDIR /usr/local/tomcat/webapps/ROOT

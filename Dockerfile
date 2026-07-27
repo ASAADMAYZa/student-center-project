@@ -1,3 +1,3 @@
-FROM tomcat:10.1-jdk17-openjdk
+FROM tomcat:9.0-jdk11-openjdk
 COPY *.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
